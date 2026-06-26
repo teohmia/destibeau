@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lift Your Life Up™ — Destibeau Seremban</title>
+<meta name="description" content="Give yourself 2 hours. First Trial RM199 — Skin Care, Emotional Relaxation, Five Senses Wellness & Tea, at Destibeau Seremban.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Italiana&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F0E4;
+    --cream-deep:#EFE1C9;
+    --gold:#B6862C;
+    --gold-light:#E2BD79;
+    --wine:#8A3B49;
+    --wine-deep:#5C2430;
+    --ink:#241914;
+    --ink-soft:#6B5648;
+    --paper:#FFFDF9;
+    --rule: rgba(138,59,73,.2);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--cream); color:var(--ink); font-family:'Cormorant Garamond', serif; overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block; max-width:100%;}
+  .container{max-width:1180px; margin:0 auto; padding:0 28px;}
+  .serif-display{font-family:'Italiana', serif; letter-spacing:.02em;}
+
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} .marquee-track{animation:none !important;} }
+
+  /* ---------- nav ---------- */
+  .nav{ position:fixed; top:0; left:0; right:0; z-index:60; display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px; background:rgba(248,240,228,.88); backdrop-filter: blur(8px); border-bottom:1px solid var(--rule);}
+  .nav-brand{display:flex; align-items:center; gap:10px;}
+  .nav-brand img{height:32px; width:auto;}
+  .nav-brand span{font-family:'Italiana',serif; font-size:1rem; letter-spacing:.14em; color:var(--wine-deep);}
+  .nav-right{display:flex; align-items:center; gap:22px;}
+  .lang-pill{display:flex; align-items:center; gap:6px; font-size:.82rem; letter-spacing:.04em; color:var(--ink-soft);}
+  .lang-pill b{color:var(--wine-deep); font-weight:700;}
+  .lang-pill .soon{opacity:.55; font-style:italic;}
+  .nav-cta{ background:var(--wine); color:var(--paper); font-weight:600; font-size:.9rem; letter-spacing:.03em;
+    padding:9px 20px; border-radius:999px; border:1px solid var(--wine); transition:background .25s, color .25s;}
+  .nav-cta:hover{background:transparent; color:var(--wine);}
+  @media (max-width:640px){ .lang-pill{display:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{ position:relative; padding-top:108px; background:var(--cream); overflow:hidden;}
+  .hero-watermark{ position:absolute; top:-60px; right:-120px; width:640px; height:640px; opacity:.06; pointer-events:none;}
+  .hero-grid{ position:relative; display:grid; grid-template-columns:1.08fr .92fr; align-items:center; gap:10px; min-height:calc(100vh - 108px);}
+  .hero-copy{ padding:36px 0 64px; position:relative; z-index:2;}
+  .kicker{display:flex; align-items:center; gap:10px; margin-bottom:20px;}
+  .kicker .ln{width:34px; height:1px; background:var(--gold);}
+  .kicker span{font-weight:700; letter-spacing:.22em; text-transform:uppercase; font-size:.76rem; color:var(--wine);}
+  .h1{ font-family:'Italiana', serif; color:var(--gold); font-size:clamp(3.4rem, 7vw, 6.2rem); line-height:.95; letter-spacing:.005em;}
+  .h1 sup{font-size:.28em; top:-1.8em; font-family:'Cormorant Garamond',serif; font-weight:600;}
+  .h1 .accent{ position:relative; display:inline-block; color:var(--wine-deep);}
+  .tagline{font-style:italic; font-weight:600; color:var(--wine); font-size:1.55rem; margin-top:18px; max-width:480px;}
+  .rule-leaf{width:130px; height:14px; margin:28px 0;}
+  .hero-line{font-size:1.18rem; color:var(--ink-soft); letter-spacing:.03em;}
+  .hero-hours{font-family:'Italiana',serif; color:var(--wine-deep); font-size:clamp(2.6rem, 5vw, 3.4rem); line-height:1;}
+
+  .hero-actions{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap; align-items:center;}
+  .btn-primary{ background:var(--wine); color:var(--paper); padding:16px 34px; border-radius:999px; font-size:1.02rem;
+    letter-spacing:.03em; font-weight:700; box-shadow:0 14px 28px -12px rgba(92,36,48,.6); border:1px solid var(--wine);
+    transition:transform .25s, box-shadow .25s; display:inline-flex; align-items:center; gap:10px;}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{border:1px solid var(--gold); color:var(--wine-deep); padding:15px 28px; border-radius:999px; font-size:1rem; font-weight:700;}
+  .trust-line{ font-size:.92rem; color:var(--ink-soft); margin-top:22px; display:flex; align-items:center; gap:8px;}
+  .trust-line .stars{color:var(--gold); letter-spacing:1px;}
+
+  .hero-visual{ position:relative; height:100%; display:flex; align-items:center; justify-content:center;}
+  .hero-photo-wrap{ position:relative; width:100%; max-width:480px; aspect-ratio:4/5.1; overflow:hidden;
+    clip-path: polygon(8% 0%, 100% 0%, 100% 92%, 92% 100%, 0% 100%, 0% 8%);
+    box-shadow:0 40px 70px -28px rgba(36,25,20,.5);}
+  .hero-photo-wrap img{width:100%; height:100%; object-fit:cover; object-position:50% 18%;}
+  .hero-photo-wrap::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(36,25,20,0) 60%, rgba(92,36,48,.28) 100%);}
+  .price-medallion{ position:absolute; left:-26px; bottom:-32px; width:178px; height:178px; border-radius:50%;
+    background:var(--paper); border:2px solid var(--gold-light); display:flex; flex-direction:column; align-items:center; justify-content:center;
+    box-shadow:0 24px 44px -16px rgba(36,25,20,.4); text-align:center;}
+  .price-medallion .lbl{font-size:.76rem; letter-spacing:.16em; color:var(--wine); text-transform:uppercase; font-weight:700;}
+  .price-medallion .amt{font-family:'Italiana',serif; color:var(--wine-deep); font-size:2.55rem; line-height:1; margin-top:4px;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr; min-height:auto;}
+    .hero-copy{order:1; padding:18px 0 0;}
+    .hero-visual{order:2; padding:48px 0 70px;}
+    .hero-photo-wrap{max-width:320px;}
+    .price-medallion{width:138px;height:138px; left:0;}
+    .hero-watermark{display:none;}
+  }
+
+  /* ---------- award marquee ---------- */
+  .award-strip{ background:var(--wine-deep); color:var(--paper); padding:22px 0; overflow:hidden; position:relative;
+    border-top:1px solid rgba(226,189,121,.3); border-bottom:1px solid rgba(226,189,121,.3);}
+  .marquee-track{ display:flex; white-space:nowrap; gap:46px; animation:scroll 38s linear infinite;}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .award-item{display:flex; align-items:center; gap:10px; font-size:.95rem; letter-spacing:.04em; color:var(--gold-light); flex:none;}
+  .award-item b{color:var(--paper); font-weight:600;}
+  .award-item .sep{color:rgba(226,189,121,.5);}
+
+  /* ---------- experience ---------- */
+  .experience{ padding:96px 0 80px; background:var(--paper);}
+  .section-head{ margin-bottom:54px; max-width:640px;}
+  .section-head.center{ margin-left:auto; margin-right:auto; text-align:center;}
+  .eyebrow2{font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--wine); font-weight:700;}
+  .h2{font-family:'Italiana',serif; color:var(--gold); font-size:clamp(2.2rem,3.6vw,3rem); margin-top:10px;}
+  .sub{color:var(--ink-soft); font-size:1.1rem; margin-top:12px; line-height:1.5;}
+
+  .feature-list{ display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--rule);}
+  .feature{ padding:38px 26px 0; border-right:1px solid var(--rule); position:relative;}
+  .feature:last-child{border-right:none;}
+  .feature .fnum{ font-family:'Italiana',serif; color:var(--gold-light); font-size:2.2rem; line-height:1;}
+  .feature .ico{ width:56px;height:56px; margin:14px 0 20px; border-radius:50%; border:1.4px solid var(--gold-light);
+    display:flex; align-items:center; justify-content:center; color:var(--wine-deep);}
+  .feature .ico svg{width:26px;height:26px;}
+  .feature h4{font-weight:700; font-size:1.12rem; color:var(--ink); margin-bottom:8px;}
+  .feature p{color:var(--ink-soft); font-size:.96rem; line-height:1.45;}
+  @media (max-width:860px){ .feature-list{grid-template-columns:1fr 1fr;}
+    .feature{border-bottom:1px solid var(--rule); padding-bottom:30px;}
+    .feature:nth-child(odd){border-right:1px solid var(--rule);} }
+  @media (max-width:560px){ .feature-list{grid-template-columns:1fr;} .feature:nth-child(odd){border-right:none;} }
+
+  /* ---------- founder / stats (dark) ---------- */
+  .legacy{ background:var(--ink); color:rgba(248,240,228,.92); padding:100px 0; position:relative; overflow:hidden;}
+  .legacy::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 85% 15%, rgba(226,189,121,.1), transparent 55%);}
+  .legacy-grid{ position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  .legacy .eyebrow2{color:var(--gold-light);}
+  .legacy-quote{ font-family:'Italiana',serif; font-style:italic; font-size:1.7rem; color:var(--cream); line-height:1.4; margin:22px 0 18px;}
+  .legacy-name{color:var(--gold-light); font-weight:700; letter-spacing:.04em;}
+  .legacy-role{color:rgba(248,240,228,.55); font-size:.92rem; margin-top:2px;}
+  .legacy-copy{margin-top:22px; color:rgba(248,240,228,.72); line-height:1.6; font-size:1.05rem;}
+  .stat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid rgba(226,189,121,.25);}
+  .stat{padding:30px 16px 0; border-right:1px solid rgba(226,189,121,.25);}
+  .stat:last-child{border-right:none;}
+  .stat .n{font-family:'Italiana',serif; color:var(--gold-light); font-size:2.6rem; line-height:1;}
+  .stat .l{color:rgba(248,240,228,.65); font-size:.85rem; letter-spacing:.05em; text-transform:uppercase; margin-top:6px;}
+  @media (max-width:860px){ .legacy-grid{grid-template-columns:1fr;} }
+
+  /* ---------- included ---------- */
+  .included{ background:var(--cream-deep); padding:90px 0;}
+  .included-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:50px; align-items:center;}
+  .included-num{ font-family:'Italiana',serif; font-size:5rem; color:var(--gold); line-height:1;}
+  .included-cap{color:var(--wine); font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-size:.86rem; margin-top:6px;}
+  .included p{margin-top:18px; color:var(--ink-soft); font-size:1.08rem; line-height:1.65;}
+  .included-list{list-style:none; display:flex; flex-direction:column; gap:16px;}
+  .included-list li{display:flex; gap:14px; align-items:flex-start; font-size:1.1rem; background:var(--paper); padding:18px 22px;
+    border-radius:3px; border:1px solid var(--rule);}
+  .included-list li .mark{ color:var(--gold); font-weight:700; flex:none; font-family:'Italiana',serif; font-size:1.2rem;}
+  .included-list li b{color:var(--wine-deep);}
+  @media (max-width:860px){ .included-grid{grid-template-columns:1fr;} }
+
+  /* ---------- testimonials ---------- */
+  .testimonials{ background:var(--paper); padding:96px 0;}
+  .test-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:30px;}
+  .test-card{ background:var(--cream); border:1px solid var(--rule); border-radius:4px; padding:32px 28px; position:relative;}
+  .test-card .stars{color:var(--gold); font-size:1rem; letter-spacing:2px; margin-bottom:14px;}
+  .test-card p{ font-size:1.12rem; line-height:1.55; color:var(--ink); font-style:italic;}
+  .test-card .who{margin-top:18px; display:flex; align-items:center; justify-content:space-between;}
+  .test-card .who b{color:var(--wine-deep); font-weight:700; font-style:normal;}
+  .test-card .who span{color:var(--ink-soft); font-size:.85rem;}
+  @media (max-width:860px){ .test-grid{grid-template-columns:1fr;} }
+  .review-badge{ display:inline-flex; align-items:center; gap:10px; margin-top:36px; padding:12px 22px; border:1px solid var(--gold-light);
+    border-radius:999px; font-size:.92rem; color:var(--wine-deep);}
+  .review-badge b{color:var(--gold); font-family:'Italiana',serif; font-size:1.1rem;}
+
+  /* ---------- pricing ---------- */
+  .pricing{ background:linear-gradient(180deg, var(--wine-deep), var(--wine)); color:var(--paper); padding:96px 0; position:relative; overflow:hidden;}
+  .pricing::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 80% 20%, rgba(255,255,255,.08), transparent 55%);}
+  .pricing-inner{ text-align:center; position:relative; z-index:1;}
+  .pricing .eyebrow2{color:var(--gold-light);}
+  .pricing .h2{color:var(--paper);}
+  .price-row{display:flex; align-items:center; justify-content:center; gap:60px; margin-top:46px; flex-wrap:wrap;}
+  .price-circle{ width:236px;height:236px; border-radius:50%; background:var(--paper); display:flex; flex-direction:column;
+    align-items:center; justify-content:center; box-shadow:0 30px 60px -20px rgba(0,0,0,.4); border:2px solid var(--gold-light);}
+  .price-circle .lbl{color:var(--wine); font-weight:700; letter-spacing:.16em; text-transform:uppercase; font-size:.85rem;}
+  .price-circle .amt{font-family:'Italiana',serif; color:var(--wine-deep); font-size:3.7rem; margin-top:6px;}
+  .price-notes{text-align:left; max-width:340px;}
+  .price-notes ul{list-style:none; display:flex; flex-direction:column; gap:14px;}
+  .price-notes li{font-size:1.12rem; display:flex; gap:10px;}
+  .price-notes li b{color:var(--gold-light); font-weight:700;}
+  .free-tag{display:inline-block; margin-top:10px; border:1px solid var(--gold-light); padding:10px 18px; border-radius:999px; font-size:.92rem;}
+  .pricing .btn-primary{background:var(--gold); border-color:var(--gold); color:var(--wine-deep); margin-top:48px;}
+  .pricing .btn-primary:hover{background:transparent; color:var(--gold);}
+
+  /* ---------- visit ---------- */
+  .visit{ background:var(--paper); padding:96px 0;}
+  .visit-grid{display:grid; grid-template-columns:1fr 1fr; gap:54px; align-items:center;}
+  .visit-photo{ border-radius:4px; overflow:hidden; box-shadow:0 25px 50px -20px rgba(36,25,20,.35);}
+  .visit-photo img{width:100%; height:400px; object-fit:cover;}
+  .contact-line{display:flex; gap:14px; align-items:center; font-size:1.16rem; margin-bottom:16px;}
+  .contact-line .dot{width:38px;height:38px;border-radius:50%;border:1.3px solid var(--gold-light);display:flex;align-items:center;justify-content:center;color:var(--wine-deep);flex:none;}
+  .contact-line .dot svg{width:18px;height:18px;}
+  @media (max-width:860px){ .visit-grid{grid-template-columns:1fr;} .visit-photo img{height:260px;} }
+
+  footer{background:var(--ink); color:rgba(248,240,228,.75); padding:46px 0; text-align:center; font-size:.92rem;}
+  footer .logo-row{display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:14px;}
+  footer .logo-row img{height:30px;}
+  footer .logo-row span{font-family:'Italiana',serif; letter-spacing:.12em; color:var(--gold-light);}
+  footer .fine{margin-top:10px; color:rgba(248,240,228,.45); font-size:.82rem;}
+  footer .zh-note{margin-top:16px; font-size:.85rem; color:rgba(248,240,228,.5); font-style:italic;}
+
+  .sticky-cta{position:fixed; bottom:0; left:0; right:0; z-index:60; display:none; background:var(--wine-deep); padding:14px 20px;
+    align-items:center; justify-content:space-between; gap:14px;}
+  .sticky-cta .info{color:var(--paper); font-size:.95rem;}
+  .sticky-cta .info b{color:var(--gold-light); font-family:'Italiana',serif; font-size:1.15rem; display:block;}
+  .sticky-cta a{background:var(--gold); color:var(--wine-deep); padding:11px 22px; border-radius:999px; font-weight:700; font-size:.95rem; white-space:nowrap;}
+  @media (max-width:760px){ .sticky-cta{display:flex;} body{padding-bottom:74px;} }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand"><img src="assets/logo.png" alt="Destibeau"><span>DESTIBEAU</span></div>
+  <div class="nav-right">
+    <div class="lang-pill"><b>EN</b> <span class="soon">· 中文版 coming soon</span></div>
+    <a class="nav-cta" href="#book">Book Now</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <svg class="hero-watermark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 18C42 4 18 2 10 14c-6 9 0 22 14 26-10 2-18 12-12 22 6 9 22 8 28-6 6 14 22 15 28 6 6-10-2-20-12-22 14-4 20-17 14-26-8-12-32-10-40 4Z" stroke="#5C2430" stroke-width="1.2"/>
+  </svg>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="kicker reveal"><span class="ln"></span><span>Destibeau Presents · New Introductory Package</span></div>
+      <h1 class="h1 reveal">Lift Your<br><span class="accent">Life Up</span><sup>™</sup></h1>
+      <div class="tagline reveal">Because beauty is a feeling, not just a finish.</div>
+
+      <svg class="rule-leaf reveal" viewBox="0 0 130 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="7" x2="52" y2="7" stroke="#B6862C" stroke-width="1"/>
+        <path d="M65 3c4 2 4 6 0 8-4-2-4-6 0-8Z" fill="#B6862C"/>
+        <line x1="78" y1="7" x2="130" y2="7" stroke="#B6862C" stroke-width="1"/>
+      </svg>
+
+      <div class="hero-line reveal">Give yourself</div>
+      <div class="hero-hours reveal">2 Uninterrupted Hours</div>
+
+      <div class="hero-actions reveal">
+        <a class="btn-primary" href="#book">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12 4a8.9 8.9 0 0 0-7.7 13.5L3 21l3.6-1.3A8.9 8.9 0 0 0 12 21a9 9 0 0 0 5.6-15.7ZM12 19.3a7.3 7.3 0 0 1-3.7-1l-.3-.2-2.6 1 .9-2.5-.2-.3A7.3 7.3 0 1 1 19.3 12 7.3 7.3 0 0 1 12 19.3Z"/></svg>
+          Book Your First Trial — RM199
+        </a>
+        <a class="btn-ghost" href="#experience">See What's Included</a>
+      </div>
+      <div class="trust-line reveal"><span class="stars">★★★★★</span> 100% recommended on Google · trusted by 14,000+ guests since 2013</div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-photo-wrap reveal">
+        <img src="assets/hero.jpg" alt="Guest relaxing during the Lift Your Life Up experience at Destibeau">
+      </div>
+      <div class="price-medallion reveal">
+        <div class="lbl">First Trial</div>
+        <div class="amt">RM199</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="award-strip">
+  <div class="marquee-track">
+    <div class="award-item"><b>2026</b> ACPF Taiwan — Brand Ambassador</div><div class="award-item sep">✦</div>
+    <div class="award-item"><b>2025</b> ACPF Asia PMU Festival — International Jury Chairman</div><div class="award-item sep">✦</div>
+    <div class="award-item"><b>2024</b> ACPF Vietnam — Jury Chairman &amp; Diamond Ambassador</div><div class="award-item sep">✦</div>
+    <div class="award-item"><b>2023</b> ABS Asia Beauty Contest — Champion</div><div class="award-item sep">✦</div>
+    <div class="award-item"><b>2023</b> ACPF Beauty Success Award — Global Top 30</div><div class="award-item sep">✦</div>
+    <div class="award-item"><b>2026</b> ACPF Taiwan — Brand Ambassador</div><div class="award-item sep">✦</div>
+    <div class="award-item"><b>2025</b> ACPF Asia PMU Festival — International Jury Chairman</div><div class="award-item sep">✦</div>
+    <div class="award-item"><b>2024</b> ACPF Vietnam — Jury Chairman &amp; Diamond Ambassador</div><div class="award-item sep">✦</div>
+    <div class="award-item"><b>2023</b> ABS Asia Beauty Contest — Champion</div><div class="award-item sep">✦</div>
+    <div class="award-item"><b>2023</b> ACPF Beauty Success Award — Global Top 30</div><div class="award-item sep">✦</div>
+  </div>
+</div>
+
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;">
+      <div class="eyebrow2">The Experience</div>
+      <h2 class="h2">Four Pillars, One Afternoon</h2>
+      <p class="sub">Every First Trial moves through the same four stages — so you leave not just treated, but genuinely restored.</p>
+    </div>
+
+    <div class="feature-list reveal">
+      <div class="feature">
+        <div class="fnum">01</div>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21c4-3 7-6.5 7-10.5A7 7 0 0 0 12 3a7 7 0 0 0-7 7.5C5 14.5 8 18 12 21Z"/><path d="M9.5 11.5c1 1 4 1 5 0"/></svg></div>
+        <h4>Skin Care</h4>
+        <p>A real read of your skin first, then treatment matched to what it actually needs that day.</p>
+      </div>
+      <div class="feature">
+        <div class="fnum">02</div>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="6" r="2.4"/><path d="M12 8.4v4M7 20c0-3 2.5-5 5-5s5 2 5 5"/></svg></div>
+        <h4>Emotional Relaxation</h4>
+        <p>Guided stillness to ease the body out of "always switched on" mode.</p>
+      </div>
+      <div class="feature">
+        <div class="fnum">03</div>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c1.8 1.8 1.8 4.2 0 6-1.8-1.8-1.8-4.2 0-6Z"/><path d="M12 9c2.5 0 4.5 2 4.5 4.5S14.5 18 12 18s-4.5-2-4.5-4.5S9.5 9 12 9Z"/><path d="M12 18v3"/></svg></div>
+        <h4>Five Senses Wellness</h4>
+        <p>Scent, touch, sound and warmth, layered deliberately, not all at once.</p>
+      </div>
+      <div class="feature">
+        <div class="fnum">04</div>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 9h12v3a6 6 0 0 1-6 6 6 6 0 0 1-6-6V9Z"/><path d="M17 10h1.5a2 2 0 0 1 0 4H17"/><path d="M8 4c-.5 1 0 1.5.5 2.2"/><path d="M11.5 4c-.5 1 0 1.5.5 2.2"/></svg></div>
+        <h4>Tea &amp; Treats</h4>
+        <p>A slow close to the session — the way a two-hour experience should end.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="legacy">
+  <div class="container legacy-grid">
+    <div class="reveal">
+      <div class="eyebrow2">Founder's Story</div>
+      <p class="legacy-quote">"Skill builds expertise. Perspective determines how far you go."</p>
+      <div class="legacy-name">Peace Siah</div>
+      <div class="legacy-role">Founder, Destibeau · ACPF Regional Branch President</div>
+      <p class="legacy-copy">In 2010, Peace was a full-time homemaker who took a government loan to learn fibre eyelash artistry, building her name through door-to-door service. By 2013 she opened her first salon — today Destibeau is Seremban's largest one-stop beauty centre.</p>
+    </div>
+    <div class="reveal">
+      <div class="stat-grid">
+        <div class="stat"><div class="n">14,000+</div><div class="l">Clients Served</div></div>
+        <div class="stat"><div class="n">13</div><div class="l">Years Established</div></div>
+        <div class="stat"><div class="n">6</div><div class="l">Beauty Divisions</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="included">
+  <div class="container included-grid">
+    <div class="reveal">
+      <div class="included-num">02</div>
+      <div class="included-cap">Hours, Fully Yours</div>
+      <p>A single trial, unhurried — built for first-time guests who want to feel the Destibeau difference before committing to a full programme.</p>
+    </div>
+    <ul class="included-list reveal">
+      <li><span class="mark">✓</span><span><b>Complimentary Skin Analysis</b> — diagnosed with professional tools before any treatment begins.</span></li>
+      <li><span class="mark">✓</span><span><b>Personalised Skin Care</b> — matched to what your skin shows that day, not a fixed routine.</span></li>
+      <li><span class="mark">✓</span><span><b>Guided Emotional Relaxation</b> — a real pause, not a rushed add-on.</span></li>
+      <li><span class="mark">✓</span><span><b>Five Senses Wellness Ritual</b> — scent, touch, sound and warmth, layered with intention.</span></li>
+      <li><span class="mark">✓</span><span><b>Tea &amp; Treats</b> — to close the session slowly.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow2">In Their Words</div>
+      <h2 class="h2">What Guests Are Saying</h2>
+      <p class="sub">Shared from genuine Google reviews left by Destibeau guests.</p>
+    </div>
+    <div class="test-grid reveal">
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"Our beautician was skilled and warm — the treatment ended with a foot spa, rose tea and cake. Felt thoroughly pampered."</p>
+        <div class="who"><b>Yi Xin S.</b><span>Google Review</span></div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"No pressure to buy add-ons — just genuine, comfortable care. That alone makes me want to come back."</p>
+        <div class="who"><b>Y.N.</b><span>Google Review</span></div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"My lash extensions were done with real precision — professional and detail-oriented from start to finish."</p>
+        <div class="who"><b>Aly</b><span>Google Review</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;"><span class="review-badge"><b>100%</b> recommend Destibeau on Google</span></div>
+  </div>
+</section>
+
+<section class="pricing" id="book">
+  <div class="container pricing-inner">
+    <div class="eyebrow2 reveal">Limited-Time Introductory Offer</div>
+    <h2 class="h2 reveal">Reserve Your First Trial</h2>
+    <div class="price-row reveal">
+      <div class="price-circle"><div class="lbl">First Trial</div><div class="amt">RM199</div></div>
+      <div class="price-notes">
+        <ul>
+          <li><b>✓</b> 2-hour full experience, one-on-one with a Destibeau therapist</li>
+          <li><b>✓</b> Complimentary skin analysis included — no extra charge</li>
+          <li><b>✓</b> New guests only, by appointment</li>
+        </ul>
+        <span class="free-tag">+ Free Skin Analysis Worth RM88</span>
+      </div>
+    </div>
+    <a class="btn-primary" href="https://wa.me/60113318576?text=Hi%20Destibeau%2C%20I%27d%20like%20to%20book%20the%20Lift%20Your%20Life%20Up%20First%20Trial%20(RM199)" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12 4a8.9 8.9 0 0 0-7.7 13.5L3 21l3.6-1.3A8.9 8.9 0 0 0 12 21a9 9 0 0 0 5.6-15.7ZM12 19.3a7.3 7.3 0 0 1-3.7-1l-.3-.2-2.6 1 .9-2.5-.2-.3A7.3 7.3 0 1 1 19.3 12 7.3 7.3 0 0 1 12 19.3Z"/></svg>
+      Book via WhatsApp
+    </a>
+  </div>
+</section>
+
+<section class="visit">
+  <div class="container visit-grid">
+    <div class="visit-photo reveal"><img src="assets/storefront.jpg" alt="Destibeau beauty centre, Seremban"></div>
+    <div class="reveal">
+      <div class="section-head">
+        <div class="eyebrow2">Visit Us</div>
+        <h2 class="h2">Seremban's Largest Beauty Centre</h2>
+        <p class="sub">Est. 2013 · No 1, 1st Floor, Jalan KS 1, Kepayang Sentral, Seremban</p>
+      </div>
+      <div class="contact-line"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1 1.2.4 2.4.8 3.5a2 2 0 0 1-.5 2.1L8 10.6a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1.1.4 2.3.7 3.5.8a2 2 0 0 1 1.7 2Z"/></svg></span><span>011-3318 7576</span></div>
+      <div class="contact-line"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-7.4 7-12.5A7 7 0 0 0 5 9.5C5 14.6 12 22 12 22Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span><span>Seremban, Negeri Sembilan</span></div>
+      <div class="contact-line"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l8 6 8-6"/></svg></span><span>DestiBeau_KepayangS2 — WhatsApp Business</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo-row"><img src="assets/logo.png" alt="Destibeau"><span>DESTIBEAU</span></div>
+    <div>Seremban · Est. 2013 · 011-3318 7576</div>
+    <div class="fine">First Trial offer valid for new guests only, while appointments last. Prices inclusive of tax and subject to change.</div>
+    <div class="zh-note">中文版本即将推出 · A Chinese-language version of this page is planned as a separate page.</div>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <div class="info">First Trial <b>RM199</b></div>
+  <a href="https://wa.me/60113318576?text=Hi%20Destibeau%2C%20I%27d%20like%20to%20book%20the%20Lift%20Your%20Life%20Up%20First%20Trial%20(RM199)" target="_blank" rel="noopener">Book Now</a>
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  reveals.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
